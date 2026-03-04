@@ -11,18 +11,21 @@ jobs:
         run: echo "This is cloning the code"
     
   build:
+    needs: [code]
     runs-on: ubuntu-latest
     steps: 
       - name: build code
         run: echo "Docker container build"
   
   test:
+    needs: [build]
     runs-on: ubuntu-latest
     steps:
       - name: test the code
         run: echo "Testing the code"
         
   deploy:
+    needs: [test]
     runs-on: ubuntu-latest
     steps:
       - name: code deploy
