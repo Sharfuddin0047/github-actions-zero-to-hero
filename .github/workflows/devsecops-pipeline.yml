@@ -21,7 +21,11 @@ jobs:
 
 
   # Build After security tests pass
-  builds:
+  build:
     needs: [code-quality, secrets-scan, dependency-scan, docker-scan]
     uses: ./.github/workflows/docker-build-push.yml
     secrets: inherit
+
+  trivy:
+    needs: [build]
+    uses: ./.github/workflows/image-scan.yml
