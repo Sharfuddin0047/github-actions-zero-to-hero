@@ -10,6 +10,7 @@ jobs:
 
   secrets-scan:
     uses: ./.github/workflows/secrets-scan.yml
+    secrets: inherit #to inherit secrets from secrets.yml
 
   dependency-scan:
     uses: ./.github/workflows/dependency-scan.yml
